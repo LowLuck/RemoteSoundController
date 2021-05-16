@@ -23,19 +23,19 @@ def sys_clear(lis):
 if __name__ == "__main__":
     q = main()
     p = sys_clear(q[1])
-    print('Рабочие процессы')
+    print('Processes in work')
     print(p)
-    print('Напишите название процесса, звук которого нужно именить')
+    print('Choose a process to work')
     w = input()
     audio_controller = AudioController(w)
     print(f'\n'
-          f'ВНИМАНИЕ! Звук в процентах от основного звука компьютера! \n'
-          f'1 -- равен основному звуку, 0.5 половина от основного и т.д \n'
-          f'up <number> -- увеличить громкость на <процент> \n'
-          f'down <number> -- понизить громкость на <процент> \n'
-          f'mute -- заглушить \n'
-          f'unmute -- разглушить \n'
-          f'stop -- выход')
+          f'WARNING! Values are percentages of master volume! \n'
+          f'1 -- sound equals to master, 0.5 half of main etc. \n'
+          f'up <number> -- increase <percent> \n'
+          f'down <number> --  decrease <percent> \n'
+          f'mute -- mute \n'
+          f'unmute -- unmute \n'
+          f'stop -- stop the program')
     while True:
         w = input()
         if w == 'stop':
