@@ -43,7 +43,7 @@ def main(w):
           f'stop -- stop the program')
     while True:
         w = input().split()
-        if w == 'stop':
+        if w[0] == 'stop':
             break
         elif w[0] == 'up':
             num = w[1]
