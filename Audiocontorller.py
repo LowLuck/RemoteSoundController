@@ -71,26 +71,23 @@ class AudiocontrollerCode:
     def serverwork(self, into):
         w = into.split()
         audio_controller = AudioController(self.processname)
-        while True:  # DO NOT FORGET TO ADD NEW FUNCTIONS TO CLIENT!
-            if w[0] == 'stop':
-                break
-            elif w[0] == 'up':
-                num = w[1]
-                audio_controller.increase_volume(float(num))
-            elif w[0] == 'down':
-                num = w[1]
-                audio_controller.decrease_volume(float(num))
-            elif w[0] == 'half':
-                audio_controller.set_volume(0.5)
-            elif w[0] == 'full':
-                audio_controller.set_volume(1)
-            elif w[0] == 'mute':
-                audio_controller.mute()
-            elif w[0] == 'unmute':
-                audio_controller.unmute()
-            else:
-                print(w)
-                # print('Command not found')
+        if w[0] == 'up':
+            num = w[1]
+            audio_controller.increase_volume(float(num))
+        elif w[0] == 'down':
+            num = w[1]
+            audio_controller.decrease_volume(float(num))
+        elif w[0] == 'half':
+            audio_controller.set_volume(0.5)
+        elif w[0] == 'full':
+            audio_controller.set_volume(1)
+        elif w[0] == 'mute':
+            audio_controller.mute()
+        elif w[0] == 'unmute':
+            audio_controller.unmute()
+        else:
+            print(w)
+            # print('Command not found')
 
     def main_start(self):
         namelist = self.refresh(False)

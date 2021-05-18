@@ -19,20 +19,19 @@ prevdata = ''
 data = conn.recv(1024).decode("utf-8")
 if not Class.get_process():
     Class.set_process(data)
-    print(Class.get_process)
 
 while True:
-    data = conn.recv(1024).decode("utf-8") # decoding data
+    data = conn.recv(1024).decode("utf-8")  # decoding data
     print(data)
     fulldata.append(data)
 
-    if status:
-        time.sleep(2)
-        print('woke')
+    if data != 'Emp':
         Class.serverwork(data)
 
     if not data:
         break
+
+    data = 'Emp'
 
 print(f'Recieved data: {fulldata}')
 conn.close()

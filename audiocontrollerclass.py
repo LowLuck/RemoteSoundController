@@ -12,7 +12,7 @@ class AudioController(object):
             interface = session.SimpleAudioVolume
             if session.Process and session.Process.name() == self.process_name:
                 interface.SetMute(1, None)
-                print(self.process_name, 'has been muted.')  # debug
+                # print(self.process_name, 'has been muted.')  # debug
 
     def unmute(self):
         sessions = AudioUtilities.GetAllSessions()
