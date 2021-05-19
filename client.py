@@ -12,6 +12,7 @@ Audiocontorller = AudiocontrollerCode()
 Audiocontorller.main_start()
 
 
+processes = sock.recv(1024).decode("utf-8")
 sock.send(bytes(Audiocontorller.get_process(),  encoding='utf-8'))
 while True:
     message = input()

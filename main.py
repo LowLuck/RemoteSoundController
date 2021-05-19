@@ -32,6 +32,7 @@ while True:
         break
 
     data = 'Emp'
+    time.sleep(3)
 
 print(f'Recieved data: {fulldata}')
 conn.close()
