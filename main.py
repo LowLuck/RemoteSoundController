@@ -13,26 +13,38 @@ print('connected:', addr)
 
 fulldata = []
 Class = AudiocontrollerCode()
-status = True
-prevdata = ''
 
-data = conn.recv(1024).decode("utf-8")
+q = Class.sys_clear(Class.process_get()[1])
+conn.send(bytes(' '.join(q), encoding='utf-8'))
+
+while True:
+    data = conn.recv(1024).decode("utf-8")
+    if data == 'refr':
+        q = Class.sys_clear(Class.process_get()[1])
+        conn.send(bytes(' '.join(q), encoding='utf-8'))
+    else:
+        break
+
 if not Class.get_process():
     Class.set_process(data)
+    print(Class.get_process())
 
 while True:
     data = conn.recv(1024).decode("utf-8")  # decoding data
-    print(data)
     fulldata.append(data)
 
-    if data != 'Emp':
-        Class.serverwork(data)
-
-    if not data:
+    if data == 'stop':
         break
 
-    data = 'Emp'
-    time.sleep(3)
+    if data != 'Emp':
+        senddat = Class.serverwork(data)
+        conn.send(bytes(senddat, encoding='utf-8'))
+
+    if data == 'stop':
+        break
+
+    fulldata.append(data)
+
 
 print(f'Recieved data: {fulldata}')
 conn.close()
