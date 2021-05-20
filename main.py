@@ -43,8 +43,6 @@ while True:
     if data == 'stop':
         break
 
-    fulldata.append(data)
-
 
 print(f'Recieved data: {fulldata}')
 conn.close()
